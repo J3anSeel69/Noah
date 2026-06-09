@@ -43,6 +43,14 @@ async def on_ready():
         )
     )
 
+@bot.event
+async def on_disconnect():
+    print("Bot desconectou 😭")
+
+@bot.event
+async def on_resumed():
+    print("Bot reconectou 🌹")
+
 #comando de teste
 @bot.command()
 async def setup(ctx):
@@ -114,4 +122,7 @@ import os
 
 keep_alive()
 
-bot.run(os.getenv("TOKEN"))
+bot.run(
+    os.getenv("TOKEN"),
+    reconnect=True
+)
